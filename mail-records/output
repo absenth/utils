@@ -1,0 +1,20 @@
+--------------------
+google.com MX 10 smtp.google.com.
+google.com SPF "v=spf1 include:_spf.google.com ~all"
+google.com DMARC "v=DMARC1; p=reject; rua=mailto:mailauth-reports@google.com"
+google.com No DKIM
+--------------------
+yahoo.com MX 1 mta5.am0.yahoodns.net.
+yahoo.com SPF "v=spf1 redirect=_spf.mail.yahoo.com"
+yahoo.com DMARC "v=DMARC1; p=reject; pct=100; rua=mailto:d@rua.agari.com; ruf=mailto:d@ruf.agari.com;"
+yahoo.com No DKIM
+--------------------
+microsoft.com MX 10 microsoft-com.mail.protection.outlook.com.
+microsoft.com SPF "v=spf1 include:_spf-a.microsoft.com include:_spf-b.microsoft.com include:_spf-c.microsoft.com include:_spf-ssg-a.microsoft.com include:spf-a.hotmail.com include:_spf1-meo.microsoft.com -all"
+microsoft.com DMARC "v=DMARC1; p=reject; pct=100; rua=mailto:d@rua.agari.com; ruf=mailto:d@ruf.agari.com; fo=1"
+microsoft.com No DKIM
+--------------------
+facebook.com MX 10 smtpin.vvv.facebook.com.
+facebook.com SPF "v=spf1 redirect=_spf.facebook.com"
+facebook.com DMARC "v=DMARC1; p=reject; rua=mailto:a@dmarc.facebookmail.com; ruf=mailto:fb-dmarc@datafeeds.phishlabs.com; pct=100"
+facebook.com No DKIM

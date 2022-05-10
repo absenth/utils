@@ -1,0 +1,52 @@
+---
+  - name: Playbook Part zero
+    hosts: all
+	become: yes
+	become_user: root
+	tasks:
+	  - name: task 1
+		yum:
+          name: nginx
+		  state: absent
+
+  - name: Playbook Part one
+    hosts: webservers
+    become: yes
+    become_user: root
+    tasks:
+      - name: task 2
+        user:
+          name: apacheadm
+          group: users,admin
+          shell: /bin/bash
+          home: /home/weblogic
+
+      - name: task 3
+        yum:
+          name: httpd
+          state: installed
+
+      - name: task 4
+        ansible.builtin.service:
+          name: httpd
+          state restarted
+
+  - name: Playbook Part two
+    hosts: appservers
+    become: yes
+    become_user: root
+    tasks:
+      - name: task 5
+        user:
+          name: tomcatadm
+          group: users
+          shell: /bin/bash
+          home: /home/tomcat
+
+      - name: task 6
+        file:
+          path: /opt/oracle
+          owner: tomcatadm
+          group: users
+          state: present
+          mode: 0755
